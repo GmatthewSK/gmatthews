@@ -1,0 +1,469 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --primary: #FE5D26;
+    --secondary: #F2C078;
+    --dark: #0a192f;
+    --light: #FAEDCA;
+    --background: #4E1F00;
+}
+
+body {
+    background: var(--background);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    min-height: 100vh;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.profile-sidebar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: rgb(164, 83, 33);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 119, 255, 0.1);
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    border: 4px solid var(--primary);
+    padding: 4px;
+    position: relative;
+    overflow: show;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.2),
+        inset 0 2px 0 rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #f0f0f0, #e6e6e6);
+}
+
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    padding: inherit;
+    border: inherit;
+    mask: radial-gradient(circle, transparent 70%, black 71%);
+    background: inherit;
+    z-index: 1;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    filter: brightness(1.05) contrast(1.1);
+}
+
+.profile-image:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        inset 0 2px 0 rgba(255,255,255,0.4);
+}
+
+.profile-image:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1) contrast(1.15);
+}
+
+.main-content {
+    padding: 2rem;
+    background: rgb(164, 83, 33);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--light);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--light);
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    background: rgba(0, 255, 136, 0.05);
+    transform: translateY(-5px);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.project-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+.hobbies-section {
+    background: 
+        linear-gradient(145deg, rgba(254, 93, 38, 0.08), rgba(242, 192, 120, 0.05)),
+        var(--glass);
+    padding: 1.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(254, 93, 38, 0.2);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 8px 25px rgba(78, 31, 0, 0.3);
+    margin: 2rem 0;
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); /* ✅ Sedikit lebih lebar */
+    gap: 1.2rem;
+    justify-items: center;
+    width: 100%;
+}
+
+.hobby-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* ✅ Center horizontal */
+    justify-content: center; /* ✅ Center vertical */
+    gap: 0.8rem;             /* ✅ Gap lebih konsisten */
+    padding: 1.5rem 0.8rem;  /* ✅ Padding lebih merata */
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 90px;        /* ✅ Tinggi konsisten */
+    width: 100%;             /* ✅ Full width container */
+    backdrop-filter: blur(10px);
+}
+
+.hobby-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(254, 93, 38, 0.2), 
+        rgba(242, 192, 120, 0.3),
+        transparent);
+    transition: left 0.7s ease;
+    z-index: 1;
+}
+
+.hobby-item:hover::before {
+    left: 100%;
+}
+
+.hobby-item:hover {
+    border-color: rgba(254, 93, 38, 0.4);
+    background: rgba(254, 93, 38, 0.12);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(254, 93, 38, 0.25),
+        0 0 0 1px rgba(254, 93, 38, 0.2);
+}
+
+.hobby-icon {
+    width: 48px;              /* ✅ Ukuran fixed */
+    height: 48px;             /* ✅ Ukuran fixed */
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;      /* ✅ Center vertical icon */
+    justify-content: center;  /* ✅ Center horizontal icon */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(254, 93, 38, 0.3);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;           /* ✅ Tidak mengecil */
+}
+
+.hobby-item:hover .hobby-icon {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 8px 25px rgba(254, 93, 38, 0.4);
+}
+
+.hobby-icon i {
+    font-size: 1.3rem;        /* ✅ Ukuran icon pas */
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.hobby-item span {
+    font-size: 0.8rem;
+    color: var(--light);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    opacity: 0.95;
+    position: relative;
+    z-index: 2;
+    margin-top: 0.2rem;       /* ✅ Jarak dari icon */
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hobbies-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .hobby-item {
+        min-height: 80px;
+        padding: 1.2rem 0.6rem;
+    }
+    
+    .hobby-icon {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .hobby-icon i {
+        font-size: 1.2rem;
+    }
+}
+
+.roadmap-section {
+    margin: 4rem 0;
+}
+
+.roadmap-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.roadmap-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, 
+        var(--primary), 
+        var(--secondary), 
+        transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(254, 93, 38, 0.3);
+}
+
+.roadmap-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    opacity: 0.7;
+    transform: translateX(20px);
+    animation: slideInRoadmap 0.8s ease forwards;
+}
+
+.roadmap-step.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.roadmap-step.future {
+    opacity: 0.5;
+}
+
+.roadmap-step:last-child {
+    margin-bottom: 0;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    position: relative;
+    z-index: 2;
+    box-shadow: 
+        0 10px 25px rgba(254, 93, 38, 0.4),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    margin-right: 2rem;
+}
+
+.step-number::after {
+    content: '';
+    position: absolute;
+    right: -52px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.step-content {
+    background: 
+        linear-gradient(145deg, rgba(254, 93, 38, 0.08), rgba(242, 192, 120, 0.05)),
+        var(--glass);
+    padding: 1.8rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(254, 93, 38, 0.2);
+    backdrop-filter: blur(15px);
+    flex: 1;
+    position: relative;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 8px 25px rgba(78, 31, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.roadmap-step:hover .step-content {
+    transform: translateX(10px);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 15px 40px rgba(254, 93, 38, 0.25);
+    border-color: rgba(254, 93, 38, 0.4);
+}
+
+.step-content h4 {
+    font-size: 1.4rem;
+    color: var(--light);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.step-content p {
+    margin: 0;
+    color: rgba(250, 237, 202, 0.9);
+    font-size: 1rem;
+}
+
+.step-content small {
+    color: rgba(250, 237, 202, 0.6);
+    font-size: 0.9rem;
+}
